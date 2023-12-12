@@ -1,0 +1,46 @@
+.body {
+
+  background: hsla(197, 74%, 43%, 1);
+  background: linear-gradient(90deg, hsla(197, 74%, 43%, 1) 0%, hsla(27, 81%, 58%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(197, 74%, 43%, 1) 0%, hsla(27, 81%, 58%, 1) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(197, 74%, 43%, 1) 0%, hsla(27, 81%, 58%, 1) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#1C90BF", endColorstr="#EB8A3D", GradientType=1);
+
+}
+
+#contenedorProductos{
+  overflow: hidden;
+  background-color: rgba(240, 248, 255, 0.387);
+  border-radius: 10px;
+}
+
+.cardProducto{
+  max-width: 18rem;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.card-img-top {
+  width: 100%;
+}
+
+.contCarro {
+  margin-top: 5em;
+  background-color: rgba(240, 248, 255, 0.387);
+  border-radius: 10px;
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  margin-top: 10px;
+}
+
+.imagenCarro {
+  height: 85px;
+}
+
+.cardCarro{
+  max-width: 300px;
+}
+
+
