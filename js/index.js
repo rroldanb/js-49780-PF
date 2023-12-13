@@ -1,8 +1,8 @@
 // Creación de productos
 
 class Producto {
-    constructor(codigo, nombre, precio, stock, unidad, img) {
-        this.codigo = codigo;
+    constructor(id, nombre, precio, stock, unidad, img) {
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
@@ -11,12 +11,12 @@ class Producto {
     }
 }
 
-let asado = new Producto(1, "Asado", 11000, 10, "Kg", "./assets/img/asado.webp");
-let bife = new Producto(2, "Bife", 12000, 9, "Kg", "./assets/img/bife-angus.webp");
-let cuadril = new Producto(3, "Colita de Cuadril", 13000, 8, "Kg", "./assets/img/colita-de-cuadril.webp");
-let entrana = new Producto(4, "Entraña", 14000, 9, "Kg", "./assets/img/entrana.webp");
-let tomahawk = new Producto(5, "Tomahawk", 15000, 9, "Kg", "./assets/img/tomahawk.webp");
-let entrecot = new Producto(6, "Entrecot", 16000, 9, "Kg", "./assets/img/entrecot.webp");
+let asado = new Producto("carne-01", "Asado", 11000, 50, "Kg", "./assets/img/asado.webp");
+let bife = new Producto("carne-02", "Bife", 12000, 90, "Kg", "./assets/img/bife-angus.webp");
+let cuadril = new Producto("carne-3", "Colita de Cuadril", 13000, 8, "Kg", "./assets/img/colita-de-cuadril.webp");
+let entrana = new Producto("carne-04", "Entraña", 14000, 60, "Kg", "./assets/img/entrana.webp");
+let tomahawk = new Producto("carne-05", "Tomahawk", 15000, 70, "Kg", "./assets/img/tomahawk.webp");
+let entrecot = new Producto("carne-06", "Entrecot", 16000, 90, "Kg", "./assets/img/entrecot.webp");
 
 const PRODUCTOS = [asado, bife, cuadril, entrana, tomahawk, entrecot];
 
@@ -27,72 +27,92 @@ let row = document.createElement("div");
 row.classList.add("row");
 
 
-PRODUCTOS.forEach((producto, index) => {
-    let col = document.createElement("div");
-    col.classList = ("col-md-4 col-sm-6 text-center");
+// Carga elementos del DOM en variables
+const contenedorProductos = document.querySelector("#contenedor-productos");
 
-    let cardProducto = document.createElement("div");
-    cardProducto.classList = "card cardProducto text-center mx-auto"
-    cardProducto.innerHTML =
+let botonesAgregar = document.querySelectorAll(".producto-agregar");
+const numerito = document.querySelector("#numerito");
 
-        `
-        <img src="${producto.img} " class="card-img-top img-fluid" alt="Imagen de ${producto.nombre}">
-        <div class="card-body">
-            <h5 class="card-title">${producto.nombre}</h5>
-            <p class="card-text">Precio: ${producto.precio.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} por ${producto.unidad}</p>
-            <p class="card-text">Stock: <span id="stock-${index}">${producto.stock}  </span> ${producto.unidad}</p>
-            <button class="btn btn-primary" onclick="agregarAlCarro(${index})">Agregar al Carro</button>
-    
+const botonCarrito = document.querySelector("#boton-carrito");
+
+function despliegaProductos(productosElegidos) {
+    contenedorProductos.innerHTML = "";
+    productosElegidos.forEach(producto => {
+
+
+        let cardProducto = document.createElement("div");
+        cardProducto.classList = "card producto cardProducto text-center mx-auto"
+        cardProducto.innerHTML = `
+        <img class="producto-imagen" src="${producto.img}" alt="${producto.nombre}">
+        <div class="producto-detalles">
+            <h3 class="producto-titulo">${producto.nombre}</h3>
+            <p class="producto-precio">${producto.precio.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} / ${producto.unidad}</p>
+            <p class="producto-stock"> Stock: ${producto.stock} ${producto.unidad}</p>
+            <button class="producto-agregar btn btn-primary" id="${producto.id}">Agregar al Carro</button>
         </div>
-    `;
-    col.appendChild(cardProducto);
-    row.appendChild(col);
-});
-contenedorProductos.appendChild(row);
+        `;
+        contenedorProductos.append(cardProducto);
+    })
+    actualizaBotonesAgregar()
+}
+
+despliegaProductos(PRODUCTOS);
+
+
+function actualizaBotonesAgregar() {
+    botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarito);
+    })
+}
 
 
 // Gestion de compras
 
-function agregarAlCarro(index) {
-    if (PRODUCTOS[index].stock > 0) {
-        ingresaCantidad(index)
-        document.getElementById(`stock-${index}`).innerText = PRODUCTOS[index].stock;
+let productosEnCarrito;
+let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+
+if (productosEnCarritoLS) {
+
+    productosEnCarrito = JSON.parse(productosEnCarritoLS);
+    actualizaNumerito();
+} else {
+    productosEnCarrito = [];
+}
+
+function agregarAlCarito(e) {
+
+    const idBoton = e.currentTarget.id;
+    const productoAgregado = PRODUCTOS.find(producto => producto.id === idBoton);
+    if (productosEnCarrito.some(producto => producto.id === idBoton)) {
+        const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+        productosEnCarrito[index].cantidad++;
+        console.log(productosEnCarrito[index])
     } else {
-        alert('No hay stock disponible para este producto');
+        productoAgregado.cantidad = 1;
+        productosEnCarrito.push(productoAgregado);
+    }
+    actualizaNumerito();
+
+    //Guarda en Local Storage
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+};
+
+function actualizaNumerito() {
+    let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    numerito.innerText = nuevoNumerito;
+    if (nuevoNumerito === 0) {
+        botonCarrito.querySelector("i").classList.remove("bi-cart-fill");
+        botonCarrito.querySelector("i").classList.add("bi-cart");
+    } else {
+        botonCarrito.querySelector("i").classList.remove("bi-cart");
+        botonCarrito.querySelector("i").classList.add("bi-cart-fill");
     }
 }
 
-function ingresaCantidad(index) {
-    let reintentar = true;
-    let productoIngresar = PRODUCTOS[index].nombre;
-    let stockActual = PRODUCTOS[index].stock;
-    while (reintentar) {
-        let cantidadProducto = prompt(`Está agregando al Carro ${productoIngresar}; El stock disponible es de ${stockActual} ${PRODUCTOS[index].unidad} Por favor indique la cantidad en ${PRODUCTOS[index].unidad} que desea comprar (Esc para salir)`);
-        if (cantidadProducto === null) {
-            cantidadProducto = 0;
-            reintentar = false
-        } else {
-            if (reintentar) {
-                cantidadProducto = parseFloat(cantidadProducto)
-                if (isNaN(cantidadProducto)) {
-                    alert("Por favor ingrese un número válido");
-                } else {
-                    if (cantidadProducto > stockActual) {
-                        alert(`No contamos con stock suficiente para cumplir con su requerimiento, el stock actual es de ${stockActual} ${PRODUCTOS[index].unidad}`)
-                    } else {
-                        if (cantidadProducto < 0) {
-                            alert(`Por favor indique un numero positivo`)
-                        } else {
-                            agregaCarro(index, cantidadProducto);
-                            reintentar = false
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 
+/// fin gestion
 
 // Creación Carro de compras
 
