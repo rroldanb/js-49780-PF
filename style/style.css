@@ -52,11 +52,16 @@ a {
   border-radius: .25rem;
 }
 
+footer{
+  text-align: center;
+}
+
 .texto-footer {
-  color: var(--clr-gray);
-  opacity: .4;
+  color: var(--clr-white);
+  opacity: .7;
 
   font-size: .75rem;
+  line-height: 3rem;
 }
 
 
