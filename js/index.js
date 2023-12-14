@@ -125,6 +125,8 @@ function actualizaStock(){
             if (stockDisponible <= 0 && botonAgregar) {
                 botonAgregar.classList.add("noHayMas");
                 botonAgregar.disabled = true;
+        stockDisponible === 0 ? stockElement.classList.add("stock-cero"): stockElement.classList.remove("stock-cero");
+
             } else {
                 botonAgregar.classList.remove("noHayMas");
                 botonAgregar.disabled = false;

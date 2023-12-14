@@ -89,7 +89,6 @@ a {
   gap: 1rem;
   font-weight: 600;
   padding: 1rem;
-  font-size: 1rem;
 }
 
 .titulo-principal{
@@ -97,11 +96,11 @@ a {
   background-color: var(--clr-white);
   border-top-left-radius: 1rem;
   font-size: 1.5rem;
+  cursor:default;
 }
 
 
 #contenedor-productos, .contenedor-carrito{
-  background-color: var(--clr-background);
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
 }
@@ -111,9 +110,25 @@ a {
   border-top-left-radius: 1rem;
 }
 
-#boton-carrito, #boton-volver{
+.boton-carrito-tienda, #boton-volver{
   border-top-right-radius: 1rem;
   width: 100%;
+}
+.boton-carrito-tienda{
+  font-size: 1rem;
+}
+#boton-volver{
+  font-size: 1.2rem;
+}
+
+.boton-menu{
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; 
+
+}
+
+.boton-menu:hover {
+  background-color: var(--clr-main-light);
+  color: var(--clr-gray);
 }
 
 .producto-agregar {
@@ -125,7 +140,8 @@ a {
   border-radius: 2rem;
   cursor: pointer;
   border: 2px solid var(--clr-white);
-  transition: bagroud-color .2s, color .2s;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; 
+
 }
 
 .producto-agregar:hover {
@@ -146,19 +162,20 @@ a {
   width: 100%;
 }
 
+.producto-imagen{
+  transition: transform 0.2s ease-in-out; 
+}
+
+.producto-imagen:hover {
+  transform: scale(1.25); 
+}
+
 
 .card {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   margin-top: 10px;
 }
 
-.imagenCarro {
-  height: 85px;
-}
-
-.cardCarro{
-  max-width: 300px;
-}
 
 
 
@@ -317,4 +334,8 @@ a {
 
 .noHayMas{
   background-color: var(--clr-gray);
+}
+
+.stock-cero{
+  color: var(--clr-red);
 }

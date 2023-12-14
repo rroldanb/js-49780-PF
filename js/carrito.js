@@ -165,6 +165,7 @@ function actualizaStockCarrito() {
         if (stockElement) {
             stockElement.textContent = `${stockDisponible} ${productoEnCarrito.unidad}`;
         }
+        stockDisponible === 0 ? stockElement.classList.add("stock-cero"): stockElement.classList.remove("stock-cero");
     });
 }
 
