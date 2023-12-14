@@ -204,7 +204,7 @@ a {
   padding-right: 1.5rem;
   border-radius: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr .5fr;
+  grid-template-columns: .5fr 1.5fr .5fr 1fr 1fr 1fr .5fr;
   align-items: center;
 }
 
@@ -221,7 +221,7 @@ a {
   font-size: .75rem;
 }
 
-.carrito-producto-cantidad, .carrito-producto-precio, .carrito-producto-subtotal {
+.carrito-producto-cantidad, .carrito-producto-precio, .carrito-producto-subtotal, .carrito-producto-stock{
   display: grid;
   justify-items: center;
 }
@@ -292,8 +292,7 @@ a {
   padding: 1rem;
   color: var(--clr-main);
   text-transform: uppercase;
-  /* border-top-left-radius: 1rem; */
-  /* border-bottom-left-radius: 1rem; */
+
 }
 
 .carrito-acciones-comprar {
@@ -314,4 +313,8 @@ a {
 
 .disabled {
   display: none;
+}
+
+.noHayMas{
+  background-color: var(--clr-gray);
 }
