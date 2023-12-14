@@ -118,8 +118,17 @@ function actualizaStock(){
     productosEnCarrito.forEach (productoEnCarrito =>{
         const stockDisponible = productoEnCarrito.stock - getProductosEnCarritoCantidad(productoEnCarrito.id);
         const stockElement = document.querySelector(`#stock-${productoEnCarrito.id}`);
+        const botonAgregar = document.getElementById(productoEnCarrito.id);
+
         if (stockElement) {
             stockElement.textContent = `Stock: ${stockDisponible} ${productoEnCarrito.unidad}`;
+            if (stockDisponible <= 0 && botonAgregar) {
+                botonAgregar.classList.add("noHayMas");
+                botonAgregar.disabled = true;
+            } else {
+                botonAgregar.classList.remove("noHayMas");
+                botonAgregar.disabled = false;
+            }
         }
     });
 }

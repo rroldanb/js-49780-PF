@@ -123,26 +123,6 @@ function comprarCarrito() {
     botonCarrito.querySelector("i").classList.add("bi-cart");
 }
 
-function nuevaCantidadTT(event) {
-    const input = event.target;
-    // Establecer mínimo en 1 si la cantidad es menor o igual a 0
-    const nuevaCantidad = input.value <= 0 ? 1 : input.value;
-    // Obtener el ID del producto
-    const productoId = input.closest('.carrito-producto').querySelector('.carrito-producto-eliminar').id;
-
-    // Encontrar el índice del producto actualizado en el arreglo
-    const index = productosEnCarrito.findIndex(producto => producto.id === productoId);
-    if (index !== -1) {
-        // Actualizar la cantidad en el objeto del producto
-        productosEnCarrito[index].cantidad = parseInt(nuevaCantidad);
-
-        // Actualizar el objeto en el localStorage
-        localStorage.setItem('productos-en-carrito', JSON.stringify(productosEnCarrito));
-    }
-    desplegarProductosCarrito();
-    actualizarTotal();
-}
-
 
 function nuevaCantidad(event) {
     const input = event.target;
