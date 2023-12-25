@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento de Productos</title>
+    <!-- Agrega tus estilos CSS aquí si es necesario -->
+</head>
+
+<body>
+    <h1>Mantenimiento de Productos</h1>
+
+    <section id="productos-almacenados">
+        <!-- Aquí se mostrarán los productos almacenados -->
+    </section>
+
+    <section id="formulario-agregar">
+        <h2>Agregar Nuevo Producto</h2>
+        <form id="formulario-producto">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required><br><br>
+
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" required><br><br>
+
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" required><br><br>
+
+            <label for="imagen">Imagen:</label>
+            <input type="file" id="imagen" accept="image/*" required><br><br>
+
+            <input type="submit" value="Agregar Producto">
+        </form>
+        <p>Capacidad disponible en el LocalStorage: <span id="capacidad-localstorage"></span></p>
+    </section>
+
+    <script src="./js/mantenimiento.js"></script>
+</body>
+
+</html>

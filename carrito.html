@@ -8,33 +8,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="./style/style.css">
-    <title>Tercera pre-entrega js-49780 :: Carrito</title>
+    <title>Proyecto Final js-49780 :: Carrito</title>
 </head>
 
 <body class="body">
-    <h1 class="text-center">Rubén Roldán <br> Tercera Pre-Entrega Curso JavaScript Comision 49780</h1>
-    <section class="container text-center">
-        <h2>Uso de JSON y Storage modificacion del DOM y control de eventos de usuario</h2>
-        <h3>e-Shop</h3>
-        <p>El usuario ingresará la cantidad a comprar y se calcularán los totales</p>
-    </section>
 
-    <header>
-        <div class="container contenedor-menu">
-            <div class="menu">
-                <h2 id="boton-carrito" class="titulo-principal"><i class="bi bi-cart"></i> Carrito</h2>
-                <p><a id="boton-volver" class="boton-volver boton-menu" href="./index.html"><i
-                    class="bi bi-arrow-return-left"></i>Volver</a> </p>
+    <div class="container titulo-pagina text-center">
+        <h1>RR e-Shop</h1>
+        <p>Carrito de compras<br> Aquí puede gestionar su compra:</p>
+    </div>
+
+    <div class="contieneCarrito">
+
+        <header>
+            <div class="container contenedor-menu">
+                <div class="menu">
+                    <h2 id="boton-carrito" class="titulo-principal">
+                        <div class="nombreConIcono">
+                            <i class="bi bi-cart"></i> Carrito
+                        </div>
+                    </h2>
+                    <p><a id="boton-volver" class="boton-volver boton-menu" href="./index.html"><i
+                                class="bi bi-arrow-return-left"></i>Volver</a> </p>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
 
 
-    <main>
-        <div class="container">
-            <div class="contenedor-carrito">
-                <p id="carrito-vacio" class="carrito-vacio">Su carrito está vacío <i class="bi bi-emoji-frown"></i></p>
+        <main>
+            <div class="container contenedor-carrito">
+                <div id="carrito-vacio" class="carrito-vacio">
+                    <p>Su carrito está vacío
+                        <i class="bi bi-emoji-frown"></i>
+                    </p>
+
+                    <a href="./index.html" class="volver-vacio">Volver a la tienda <i
+                            class="bi bi-arrow-return-left"></i> </a>
+                </div>
+
                 <div id="carrito-productos" class="carrito-productos disabled">
                     <!-- Esto se rellena con JS -->
                 </div>
@@ -56,15 +68,42 @@
                         </buttton>
                     </div>
                 </div>
-                <p id="carrito-comprado" class="carrito-comprado disabled">Muchas gracias por tu compra. <i
+                <p id="carrito-comprado2" class="carrito-comprado disabled">Muchas gracias por tu compra. <i
                         class="bi bi-emoji-laughing"></i></p>
-
+                <div id="carrito-comprado" class="carrito-comprado disabled">
+                    <p>Muchas gracias por su compra. <i
+                        class="bi bi-emoji-laughing"></i> </p>
+                    <a href="./index.html" class="volver-vacio">Volver a la tienda <i
+                            class="bi bi-arrow-return-left"></i> </a>
+                </div>
             </div>
-        </div>
-    </main>
-    <footer>
-        <p class="texto-footer">© 2023 Gagolabs</p>
-    </footer>
+        </main>
+        <footer>
+            <p class="texto-footer">© 2023 Gagolabs</p>
+        </footer>
+    </div>
+
+    <div class="container descripcion-proyecto text-center ">
+        <h2>Rubén Roldán <br> Proyecto Final Curso JavaScript Comision 49780</h2>
+        <section>
+            <h3>Entregables:</h3>
+            <ul class="lista-entregables">
+                <li>Uso de Objetos y Arrays</li>
+                <li>Uso de Funciones y Condicionales</li>
+                <li>Generación del DOM en forma dinámica </li>
+                <li>Control de Eventos de usuario</li>
+                <li>Sintaxis avanzada</li>
+                <li>Aplicación de al menos una libreria</li>
+                <li>Manejo de promesas con Fetch</li>
+                <li>Carga de datos desde un JSON local o desde una API</li>
+            </ul>
+
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
     <script src="./js/carrito.js"></script>
 </body>

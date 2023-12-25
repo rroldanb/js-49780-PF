@@ -43,7 +43,10 @@ function despliegaProductos(productosElegidos) {
         let cardProducto = document.createElement("div");
         cardProducto.classList = "card producto cardProducto text-center mx-auto"
         cardProducto.innerHTML = `
+        <div class="contenedor-producto-imagen">
         <img class="producto-imagen" src="${producto.img}" alt="${producto.nombre}">
+        </div>
+
         <div class="producto-detalles">
             <h3 class="producto-titulo">${producto.nombre}</h3>
             <p class="producto-precio">${producto.precio.toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })} / ${producto.unidad}</p>
@@ -140,4 +143,10 @@ function getProductosEnCarritoCantidad(id) {
     return productoEnCarrito ? productoEnCarrito.cantidad : 0;
 }
 
+
+
+
+
+document.getElementById('linkMantenimiento').addEventListener('click', function () {
+    window.location.href = 'mantenimiento.html';});
 
