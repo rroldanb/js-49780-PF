@@ -421,3 +421,51 @@ footer{
   border-radius: 10% 50%;
 	background-color:  linear-gradient(to bottom left, #f83600, #f9d423);
 }
+
+
+
+.modal-resumen-producto {
+  background-color: var(--clr-gray);
+  color: var(--clr-main);
+  padding: .5rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  display: grid;
+  grid-template-columns: 2.5fr 1.5fr 2fr 1fr ;
+  align-items: center;
+}
+
+
+.resumen-modal-encabezado{
+  text-decoration: underline;
+  border-top-right-radius: 1rem;
+
+
+}
+
+.modal-resumen-footer{
+  border-top: 1px solid var(--clr-main-light);
+}
+
+.modal-resume-producto-total{
+  font-weight: bold;
+}
+
+#descuentoAplicar{
+  float: inline-end;
+}
+
+.modal-titulo-radio{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.medio-pago{
+  color: var(--clr-main-light);
+  font-size: 1.2rem;
+}
+
+.modal-footer{
+  display: flex;
+  justify-content: space-between;
+}

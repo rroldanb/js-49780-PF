@@ -55,6 +55,8 @@ function despliegaProductos(productosElegidos) {
         </div>
         `;
         contenedorProductos.append(cardProducto);
+        
+
     })
     actualizaBotonesAgregar()
 }
@@ -101,6 +103,21 @@ function agregarAlCarito(e) {
 
     //Guarda en Local Storage
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+
+
+    Toastify({
+        text:`Agregando ${productoAgregado.nombre} al carrito`, 
+        duration: 1000,
+        position: "center",
+        gravity: "top",
+        offset:{
+            x: 0,
+            y: 135
+        },
+        style:{
+            background: "var(--clr-main-light)",
+        }
+    }).showToast();
 };
 
 function actualizaNumerito() {
