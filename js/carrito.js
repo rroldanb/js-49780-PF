@@ -159,12 +159,12 @@ function nuevaCantidad(event) {
             productoEnCarrito.cantidad = nuevaCantidad;
         }
 
+        // Mostrar Toastify con el mensaje correspondiente
         if ( (nuevaCantidad>0) && (nuevaCantidad <= stockDisponible)){
         const mensaje = (nuevaCantidad > cantidadAnterior) 
             ? `Agregó ${productoEnCarrito.nombre} al carrito`
             : `Quitó ${productoEnCarrito.nombre} del carrito`;
 
-        // Mostrar Toastify con el mensaje correspondiente
         Toastify({
             text: mensaje,
             duration: 1000,
@@ -218,7 +218,7 @@ function mostrarResumenCompra(descuento, totalAPagar) {
     contenedorResumen.innerHTML = ''; // Limpiamos el contenido previo
 
     const divProducto = document.createElement('div');
-    divProducto.classList.add('modal-resumen-producto'); // Agregar clases CSS si es necesario
+    divProducto.classList.add('modal-resumen-producto'); 
     divProducto.innerHTML = `
     <div class="modal-resume-producto-titulo resumen-modal-encabezado">
         <small>Producto</small>
@@ -237,7 +237,7 @@ function mostrarResumenCompra(descuento, totalAPagar) {
     contenedorResumen.appendChild(divProducto);
     productosEnCarrito.forEach(producto => {
         const divProducto = document.createElement('div');
-        divProducto.classList.add('modal-resumen-producto'); // Agregar clases CSS si es necesario
+        divProducto.classList.add('modal-resumen-producto'); 
 
         divProducto.innerHTML = `
             <div class="modal-resume-producto-titulo">
@@ -257,7 +257,7 @@ function mostrarResumenCompra(descuento, totalAPagar) {
     });
 
     const divProductoFooter = document.createElement('div');
-    divProductoFooter.classList.add('modal-resumen-producto', 'modal-resumen-footer'); // Agregar clases CSS si es necesario
+    divProductoFooter.classList.add('modal-resumen-producto', 'modal-resumen-footer'); 
     divProductoFooter.innerHTML = `
 
     <div class="modal-resume-producto-titulo">

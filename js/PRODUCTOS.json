@@ -1,0 +1,50 @@
+[
+  {
+    "id": "carne-01",
+    "nombre": "Asado",
+    "precio": 11000,
+    "stock": 10,
+    "unidad": "Kg",
+    "img": "./assets/img/asado.webp"
+  },
+  {
+    "id": "carne-02",
+    "nombre": "Bife",
+    "precio": 12000,
+    "stock": 10,
+    "unidad": "Kg",
+    "img": "./assets/img/bife-angus.webp"
+  },
+  {
+    "id": "carne-3",
+    "nombre": "Colita de Cuadril",
+    "precio": 13000,
+    "stock": 10,
+    "unidad": "Kg",
+    "img": "./assets/img/colita-de-cuadril.webp"
+  },
+  {
+    "id": "carne-04",
+    "nombre": "Entraña",
+    "precio": 14000,
+    "stock": 10,
+    "unidad": "Kg",
+    "img": "./assets/img/entrana.webp"
+  },
+  {
+    "id": "carne-05",
+    "nombre": "Tomahawk",
+    "precio": 15000,
+    "stock": 10,
+    "unidad": "Kg",
+    "img": "./assets/img/tomahawk.webp"
+  },
+  {
+    "id": "carne-06",
+    "nombre": "Entrecot",
+    "precio": 16000,
+    "stock": 10,
+    "unidad": "Kg",
+    "img": "./assets/img/entrecot.webp"
+  }
+]
