@@ -1,26 +1,26 @@
-// Creación de productos
-
-class Producto {
-    constructor(id, nombre, precio, stock, unidad, img) {
-        this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.stock = stock;
-        this.unidad = unidad;
-        this.img = img
-    }
-}
-
-let asado = new Producto("carne-01", "Asado", 11000, 10, "Kg", "./assets/img/asado.webp");
-let bife = new Producto("carne-02", "Bife", 12000, 10, "Kg", "./assets/img/bife-angus.webp");
-let cuadril = new Producto("carne-3", "Colita de Cuadril", 13000, 10, "Kg", "./assets/img/colita-de-cuadril.webp");
-let entrana = new Producto("carne-04", "Entraña", 14000, 10, "Kg", "./assets/img/entrana.webp");
-let tomahawk = new Producto("carne-05", "Tomahawk", 15000, 10, "Kg", "./assets/img/tomahawk.webp");
-let entrecot = new Producto("carne-06", "Entrecot", 16000, 10, "Kg", "./assets/img/entrecot.webp");
-
-const PRODUCTOS = [asado, bife, cuadril, entrana, tomahawk, entrecot];
+// Inicializa PRODUCTOS desde archivo JSON
 
 
+    let PRODUCTOS = [];
+
+    fetch("./js/productos.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error cargando el archivo de productos');
+            }
+            return response.json();
+        })
+        .then(data => {
+            PRODUCTOS = data;
+            despliegaProductos(PRODUCTOS);
+        })
+        .catch(error => {
+            const errorContainer = document.getElementById('error-container');
+            errorContainer.textContent = `Error: ${error.message}`;
+            console.error('Error:', error);
+        });
+    
+    
 //Despliega productos
 
 let row = document.createElement("div");

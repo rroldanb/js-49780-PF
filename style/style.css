@@ -91,6 +91,12 @@ footer{
   align-items: center;
 }
 
+#error-container{
+  background-color: var(--clr-red);
+  color: var(--clr-white);
+  font-size: xx-large;
+}
+
 .boton-menu, .titulo-principal ,#linkMantenimiento{
   background-color: var(--clr-gray);
   border: 0;
