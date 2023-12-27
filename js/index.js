@@ -1,26 +1,29 @@
 // Inicializa PRODUCTOS desde archivo JSON
 
 
-    let PRODUCTOS = [];
+let PRODUCTOS = [];
 
-    fetch("./js/productos.json")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error cargando el archivo de productos');
-            }
-            return response.json();
-        })
-        .then(data => {
-            PRODUCTOS = data;
-            despliegaProductos(PRODUCTOS);
-        })
-        .catch(error => {
-            const errorContainer = document.getElementById('error-container');
-            errorContainer.textContent = `Error: ${error.message}`;
-            console.error('Error:', error);
-        });
-    
-    
+fetch("./js/productos.json")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error cargando el archivo de productos');
+        }
+        return response.json();
+    })
+    .then(data => {
+        importaProductos = data;
+        localStorage.setItem("productos-json-ls", JSON.stringify(importaProductos));
+        let productosEnLS = localStorage.getItem("productos-json-ls");
+        PRODUCTOS = JSON.parse(productosEnLS);
+        despliegaProductos(PRODUCTOS);
+    })
+    .catch(error => {
+        const errorContainer = document.getElementById('error-container');
+        errorContainer.textContent = `Error: ${error.message}`;
+        console.error('Error:', error);
+    });
+
+
 //Despliega productos
 
 let row = document.createElement("div");
@@ -55,7 +58,7 @@ function despliegaProductos(productosElegidos) {
         </div>
         `;
         contenedorProductos.append(cardProducto);
-        
+
 
     })
     actualizaBotonesAgregar()
@@ -106,15 +109,15 @@ function agregarAlCarito(e) {
 
 
     Toastify({
-        text:`Agregando ${productoAgregado.nombre} al carrito`, 
+        text: `Agregando ${productoAgregado.nombre} al carrito`,
         duration: 1000,
         position: "center",
         gravity: "top",
-        offset:{
+        offset: {
             x: 0,
             y: 135
         },
-        style:{
+        style: {
             background: "var(--clr-main-light)",
         }
     }).showToast();
@@ -134,8 +137,8 @@ function actualizaNumerito() {
 }
 
 
-function actualizaStock(){
-    productosEnCarrito.forEach (productoEnCarrito =>{
+function actualizaStock() {
+    productosEnCarrito.forEach(productoEnCarrito => {
         const stockDisponible = productoEnCarrito.stock - getProductosEnCarritoCantidad(productoEnCarrito.id);
         const stockElement = document.querySelector(`#stock-${productoEnCarrito.id}`);
         const botonAgregar = document.getElementById(productoEnCarrito.id);
@@ -145,7 +148,7 @@ function actualizaStock(){
             if (stockDisponible <= 0 && botonAgregar) {
                 botonAgregar.classList.add("noHayMas");
                 botonAgregar.disabled = true;
-        stockDisponible === 0 ? stockElement.classList.add("stock-cero"): stockElement.classList.remove("stock-cero");
+                stockDisponible === 0 ? stockElement.classList.add("stock-cero") : stockElement.classList.remove("stock-cero");
 
             } else {
                 botonAgregar.classList.remove("noHayMas");
@@ -163,42 +166,38 @@ function getProductosEnCarritoCantidad(id) {
 
 
 
+document.getElementById('linkMantenimiento').addEventListener('click', function () {
+    const sesionIniciada = localStorage.getItem('sesionIniciada');
+    const linkMantenimiento = document.getElementById('linkMantenimiento');
 
-/* document.getElementById('linkMantenimiento').addEventListener('click', function () {
-    window.location.href = 'mantenimiento.html';}); */
 
-    
-    document.getElementById('linkMantenimiento').addEventListener('click', function () {
-        const sesionIniciada = localStorage.getItem('sesionIniciada');
-        const linkMantenimiento = document.getElementById('linkMantenimiento');
-    
- 
-        if (sesionIniciada) {
-            window.location.href = 'mantenimiento.html';
-        }else{
-        $('#modalLogin').modal('show');}
-    });
-    
-    function validarCredenciales() {
-        const usuario = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-    
-        // Verificar si las credenciales son correctas
-        if (usuario === 'coder' && password === 'coder49780') {
-            // Redirigir a la página de mantenimiento y almacenar en localStorage
-            localStorage.setItem('sesionIniciada', 'true');
-            window.location.href = 'mantenimiento.html';
-        } else {
-            // Mostrar mensaje de error o tomar alguna otra acción
-            Toastify({
-                text: 'Credenciales incorrectas. Intente de nuevo.',
-                duration: 3000,
-                backgroundColor: 'red',
-            }).showToast();
-        }
+    if (sesionIniciada) {
+        window.location.href = 'mantenimiento.html';
+    } else {
+        $('#modalLogin').modal('show');
     }
+});
 
-    // Seleccionar elementos
+function validarCredenciales() {
+    const usuario = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Verificar si las credenciales son correctas
+    if (usuario === 'coder' && password === 'coder49780') {
+        // Redirigir a la página de mantenimiento y almacenar en localStorage
+        localStorage.setItem('sesionIniciada', 'true');
+        window.location.href = 'mantenimiento.html';
+    } else {
+        // Mostrar mensaje de error o tomar alguna otra acción
+        Toastify({
+            text: 'Credenciales incorrectas. Intente de nuevo.',
+            duration: 3000,
+            backgroundColor: 'red',
+        }).showToast();
+    }
+}
+
+// Seleccionar elementos
 const inputPassword = document.getElementById('password');
 const botonMostrarOcultar = document.getElementById('mostrar-ocultar-password');
 const iconoPassword = document.getElementById('icono-password');

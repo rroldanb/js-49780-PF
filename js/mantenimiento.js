@@ -18,26 +18,51 @@ function obtenerCapacidadLocalStorage() {
 
 // Función para mostrar los productos almacenados
 function mostrarProductosAlmacenados() {
-    const contenedorProductosAlmacenados = document.getElementById('productos-almacenados');
+    const contenedorProductosAlmacenados = document.getElementById('productos-almacenados') //('productos-almacenados');
     contenedorProductosAlmacenados.innerHTML = '';
 
     // Obtener los productos del LocalStorage y de la matriz inicial
-    const productosLocalStorage = JSON.parse(localStorage.getItem('productos')) || [];
+    const productosLocalStorage = JSON.parse(localStorage.getItem('productos-json-ls')) || [];
     const todosProductos = [ ...productosLocalStorage];
+
+    let divProducto = document.createElement('div');
+
+    divProducto.classList.add('mantencion-lista-encabezado'); 
+    divProducto.innerHTML = `
+    <div class="mantencion-producto-titulo resumen-mantencion-encabezado">
+        <small>Id</small>
+    </div>
+    <div class="mantencion-producto-titulo resumen-mantencion-encabezado">
+        <small>Nombre</small>
+    </div>
+    <div class="modal-resume-producto-cantidad resumen-modal-encabezado">
+        <small>Precio</small>
+    </div>
+    <div class="modal-resume-producto-precio resumen-modal-encabezado">
+        <small>Stock inicial</small>
+    </div>
+    <div class="modal-resume-producto-subtotal resumen-modal-encabezado">
+        <small>imagen</small>
+    </div>
+`;
+contenedorProductosAlmacenados.appendChild(divProducto);
+    
 
     todosProductos.forEach(producto => {
         const divProducto = document.createElement('div');
-        divProducto.classList.add('producto-almacenado');
+        divProducto.classList.add('mantencion-producto-almacenado');
         
         divProducto.innerHTML = `
-            <p>ID: ${producto.id}</p>
-            <p>Nombre: ${producto.nombre}</p>
-            <p>Precio: ${producto.precio}</p>
-            <p>Stock: ${producto.stock}</p>
+            <p>${producto.id}</p>
+            <p>${producto.nombre}</p>
+            <p>${producto.precio}</p>
+            <p>${producto.stock}</p>
             <p>Imagen: <img src="${producto.img}" alt="${producto.nombre}" width="100"></p>
+            <div class="mantencion-botones-editar">
             <button class="editar-producto" data-id="${producto.id}">Editar</button>
             <button class="eliminar-producto" data-id="${producto.id}">Eliminar</button>
-            <hr>
+            </div>
+            <!-- <hr> -->  
         `;
 
         contenedorProductosAlmacenados.appendChild(divProducto);

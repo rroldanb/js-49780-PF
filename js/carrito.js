@@ -235,6 +235,7 @@ function mostrarResumenCompra(descuento, totalAPagar) {
     </div>
 `;
     contenedorResumen.appendChild(divProducto);
+    
     productosEnCarrito.forEach(producto => {
         const divProducto = document.createElement('div');
         divProducto.classList.add('modal-resumen-producto'); 

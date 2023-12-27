@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <title>Proyecto Final js-49780 :: Mantenimiento</title>
 </head>
+
 <body class="body">
-    
+
     <div class="container titulo-pagina text-center">
         <div class="titulo-pagina-inner">
             <h1>RR e-Shop</h1>
@@ -24,76 +25,73 @@
     </div>
 
 
-<div class="contenedorMantencion">
-    <header>
-        <div class="container contenedor-menu">
-            <div class="menu">
-                <h2  class="titulo-principal">
-                    <div class="nombreConIcono">
-                        <i class="bi bi-gear"></i> Mantenimiento
-                    </div>
-                </h2>
-                <i id="cerrarSesion" onclick="cerrarSesion()" class="bi bi-file-lock2 "></i>
-                <p><a id="boton-volver" class="boton-volver boton-menu" href="./index.html"><i
-                            class="bi bi-arrow-return-left"></i>Volver</a> </p>
+    <div class="contenedorMantencion">
+        <header>
+            <div class="container contenedor-menu">
+                <div class="menu">
+                    <h2 class="titulo-principal">
+                        <div class="nombreConIcono">
+                            <i class="bi bi-gear"></i> Mantenimiento de Productos
+                        </div>
+                    </h2>
+                    <i id="cerrarSesion" onclick="cerrarSesion()" class="bi bi-file-lock2 "></i>
+                    <p><a id="boton-volver" class="boton-volver boton-menu" href="./index.html"><i
+                                class="bi bi-arrow-return-left"></i>Volver</a> </p>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
 
 
-<main>
-    <section id="productos-almacenados" class="container">
-        <div class="productosStore container">
-            <!-- Aquí se mostrarán los productos almacenados -->
+        <main>
+            <section id="productos-almacenados" class="container productosStore">
+                <!-- Aquí se mostrarán los productos almacenados -->
+            </section>
 
-        </div>
-    </section>
+            <section id="formulario-agregar" class="container">
+                <h2>Agregar Nuevo Producto</h2>
+                <form id="formulario-producto">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" required><br><br>
 
-    <section id="formulario-agregar" class="container">
-        <h2>Agregar Nuevo Producto</h2>
-        <form id="formulario-producto">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" required><br><br>
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" required><br><br>
 
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" required><br><br>
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" required><br><br>
 
-            <label for="stock">Stock:</label>
-            <input type="number" id="stock" required><br><br>
+                    <label for="imagen">Imagen:</label>
+                    <input type="file" id="imagen" accept="image/*" required><br><br>
 
-            <label for="imagen">Imagen:</label>
-            <input type="file" id="imagen" accept="image/*" required><br><br>
+                    <input type="submit" value="Agregar Producto">
+                </form>
+                <p>Capacidad disponible en el LocalStorage: <span id="capacidad-localstorage"></span></p>
+            </section>
 
-            <input type="submit" value="Agregar Producto">
-        </form>
-        <p>Capacidad disponible en el LocalStorage: <span id="capacidad-localstorage"></span></p>
-    </section>
+        </main>
 
-</main>
+        <footer>
+            <p class="texto-footer">© 2023 Gagolabs</p>
+        </footer>
+    </div>
 
-<footer>
-    <p class="texto-footer">© 2023 Gagolabs</p>
-</footer>
-</div>
+    <div class="container descripcion-proyecto text-center ">
+        <h2>Rubén Roldán <br> Proyecto Final Curso JavaScript Comision 49780</h2>
+        <section>
+            <h3>Entregables:</h3>
+            <ul class="lista-entregables">
+                <li>Uso de Objetos y Arrays</li>
+                <li>Uso de Funciones y Condicionales</li>
+                <li>Generación del DOM en forma dinámica </li>
+                <li>Control de Eventos de usuario</li>
+                <li>Sintaxis avanzada</li>
+                <li>Aplicación de al menos una libreria</li>
+                <li>Manejo de promesas con Fetch</li>
+                <li>Carga de datos desde un JSON local o desde una API</li>
+            </ul>
 
-<div class="container descripcion-proyecto text-center ">
-<h2>Rubén Roldán <br> Proyecto Final Curso JavaScript Comision 49780</h2>
-<section>
-    <h3>Entregables:</h3>
-    <ul class="lista-entregables">
-        <li>Uso de Objetos y Arrays</li>
-        <li>Uso de Funciones y Condicionales</li>
-        <li>Generación del DOM en forma dinámica </li>
-        <li>Control de Eventos de usuario</li>
-        <li>Sintaxis avanzada</li>
-        <li>Aplicación de al menos una libreria</li>
-        <li>Manejo de promesas con Fetch</li>
-        <li>Carga de datos desde un JSON local o desde una API</li>
-    </ul>
-
-</section>
-</div>
+        </section>
+    </div>
 
     <script src="./js/mantenimiento.js"></script>
 
