@@ -103,3 +103,8 @@ function eliminarProducto(id) {
     const productosFiltrados = productosLocalStorage.filter(producto => producto.id !== id);
     localStorage.setItem('productos', JSON.stringify(productosFiltrados));
 }
+
+function cerrarSesion() {
+    localStorage.removeItem('sesionIniciada');
+    window.location.href = 'index.html';
+}

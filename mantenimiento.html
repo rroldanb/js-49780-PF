@@ -1,21 +1,56 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantenimiento de Productos</title>
-    <!-- Agrega tus estilos CSS aquí si es necesario -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/style.css">
+    <!-- ----link toastify----- -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>Proyecto Final js-49780 :: Mantenimiento</title>
 </head>
+<body class="body">
+    
+    <div class="container titulo-pagina text-center">
+        <div class="titulo-pagina-inner">
+            <h1>RR e-Shop</h1>
+            <p>Módulo de Mantenimiento de Productos<br> Aquí pueden editar los productos existentes:</p>
+        </div>
+    </div>
 
-<body>
-    <h1>Mantenimiento de Productos</h1>
 
-    <section id="productos-almacenados">
-        <!-- Aquí se mostrarán los productos almacenados -->
+<div class="contenedorMantencion">
+    <header>
+        <div class="container contenedor-menu">
+            <div class="menu">
+                <h2  class="titulo-principal">
+                    <div class="nombreConIcono">
+                        <i class="bi bi-gear"></i> Mantenimiento
+                    </div>
+                </h2>
+                <i id="cerrarSesion" onclick="cerrarSesion()" class="bi bi-file-lock2 "></i>
+                <p><a id="boton-volver" class="boton-volver boton-menu" href="./index.html"><i
+                            class="bi bi-arrow-return-left"></i>Volver</a> </p>
+            </div>
+        </div>
+    </header>
+
+
+
+<main>
+    <section id="productos-almacenados" class="container">
+        <div class="productosStore container">
+            <!-- Aquí se mostrarán los productos almacenados -->
+
+        </div>
     </section>
 
-    <section id="formulario-agregar">
+    <section id="formulario-agregar" class="container">
         <h2>Agregar Nuevo Producto</h2>
         <form id="formulario-producto">
             <label for="nombre">Nombre:</label>
@@ -35,7 +70,32 @@
         <p>Capacidad disponible en el LocalStorage: <span id="capacidad-localstorage"></span></p>
     </section>
 
-    <script src="./js/mantenimiento.js"></script>
-</body>
+</main>
 
-</html>
+<footer>
+    <p class="texto-footer">© 2023 Gagolabs</p>
+</footer>
+</div>
+
+<div class="container descripcion-proyecto text-center ">
+<h2>Rubén Roldán <br> Proyecto Final Curso JavaScript Comision 49780</h2>
+<section>
+    <h3>Entregables:</h3>
+    <ul class="lista-entregables">
+        <li>Uso de Objetos y Arrays</li>
+        <li>Uso de Funciones y Condicionales</li>
+        <li>Generación del DOM en forma dinámica </li>
+        <li>Control de Eventos de usuario</li>
+        <li>Sintaxis avanzada</li>
+        <li>Aplicación de al menos una libreria</li>
+        <li>Manejo de promesas con Fetch</li>
+        <li>Carga de datos desde un JSON local o desde una API</li>
+    </ul>
+
+</section>
+</div>
+
+    <script src="./js/mantenimiento.js"></script>
+
+
+</body>

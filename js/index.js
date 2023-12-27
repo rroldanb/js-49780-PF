@@ -164,6 +164,61 @@ function getProductosEnCarritoCantidad(id) {
 
 
 
-document.getElementById('linkMantenimiento').addEventListener('click', function () {
-    window.location.href = 'mantenimiento.html';});
+/* document.getElementById('linkMantenimiento').addEventListener('click', function () {
+    window.location.href = 'mantenimiento.html';}); */
 
+    
+    document.getElementById('linkMantenimiento').addEventListener('click', function () {
+        const sesionIniciada = localStorage.getItem('sesionIniciada');
+        const linkMantenimiento = document.getElementById('linkMantenimiento');
+    
+ 
+        if (sesionIniciada) {
+            window.location.href = 'mantenimiento.html';
+        }else{
+        $('#modalLogin').modal('show');}
+    });
+    
+    function validarCredenciales() {
+        const usuario = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+    
+        // Verificar si las credenciales son correctas
+        if (usuario === 'coder' && password === 'coder49780') {
+            // Redirigir a la página de mantenimiento y almacenar en localStorage
+            localStorage.setItem('sesionIniciada', 'true');
+            window.location.href = 'mantenimiento.html';
+        } else {
+            // Mostrar mensaje de error o tomar alguna otra acción
+            Toastify({
+                text: 'Credenciales incorrectas. Intente de nuevo.',
+                duration: 3000,
+                backgroundColor: 'red',
+            }).showToast();
+        }
+    }
+
+    // Seleccionar elementos
+const inputPassword = document.getElementById('password');
+const botonMostrarOcultar = document.getElementById('mostrar-ocultar-password');
+const iconoPassword = document.getElementById('icono-password');
+
+// Agregar evento al botón
+botonMostrarOcultar.addEventListener('click', function () {
+    if (inputPassword.type === 'password') {
+        inputPassword.type = 'text';
+        iconoPassword.classList.remove('bi-eye');
+        iconoPassword.classList.add('bi-eye-slash');
+    } else {
+        inputPassword.type = 'password';
+        iconoPassword.classList.remove('bi-eye-slash');
+        iconoPassword.classList.add('bi-eye');
+    }
+});
+
+
+
+function cerrarSesion() {
+    localStorage.removeItem('sesionIniciada');
+    window.location.href = 'index.html';
+}
