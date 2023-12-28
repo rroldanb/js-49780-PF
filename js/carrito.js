@@ -314,20 +314,16 @@ function mostrarResumenCompra(descuento, totalAPagar) {
 
 }
 
-// Llamamos a la función cuando se abre el modal
 const modalPago = document.getElementById('modalPago');
 
 modalPago.addEventListener('show.bs.modal', function () {
-    //mostrarResumenCompra(0,totalCalculado);
     seleccionarMedioPago();
 });
 
 
 const formMedioPago = document.getElementById('formMedioPago');
 
-// Agregar el event listener al formulario
 formMedioPago.addEventListener('change', function() {
-    // Llamar a la función para seleccionar el medio de pago
     seleccionarMedioPago();
 });
 

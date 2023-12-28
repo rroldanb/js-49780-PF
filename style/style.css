@@ -541,7 +541,7 @@ body {
   border-radius: 5px;
   background: var(--clr-white);
   padding: 5px;
-  text-align: right;
+  /* text-align: right; */
 }
 
 .reiniciar{

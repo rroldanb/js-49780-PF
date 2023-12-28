@@ -58,7 +58,7 @@
     "nombre": "Strato",
     "precio": 700000,
     "stock": 10,
-    "unidad": "Unidades",
+    "unidad": "Un.",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQux2ujpNeD-vAEt6xT6PDy0t0Al5HSs-LKsg&usqp=CAU",
     "activo":false
   },
@@ -67,7 +67,7 @@
     "nombre": "Mario",
     "precio": 9999,
     "stock": 9,
-    "unidad": "Unidades",
+    "unidad": "Un.",
     "img": "https://i.ebayimg.com/images/g/IHQAAOSwHLFd46hJ/s-l960.jpg",
     "activo":false
   },
@@ -76,7 +76,7 @@
     "nombre": "Jack",
     "precio": 20000,
     "stock": 10,
-    "unidad": "Litros",
+    "unidad": "Lt",
     "img": "https://i.ebayimg.com/images/g/ld4AAOSw--tgnOHt/s-l1600.jpg",
     "activo":false
   },
@@ -85,7 +85,7 @@
     "nombre": "Fernandete",
     "precio": 10000,
     "stock": 10,
-    "unidad": "Litros",
+    "unidad": "Lt",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTciSyuCkqEiSf1mG_2QhnF_u18zPIcW9FbFQ&usqp=CAU",
     "activo":false
   },
@@ -94,7 +94,7 @@
     "nombre": "Play",
     "precio": 500000,
     "stock": 10,
-    "unidad": "Unidades",
+    "unidad": "Un.",
     "img": "https://phantom-marca.unidadeditorial.es/4edae29b7e2a74e87e5bcfe03f5c5f91/resize/828/f/jpg/assets/multimedia/imagenes/2023/10/11/16970178038067.jpg",
     "activo":false
   },
@@ -103,17 +103,17 @@
     "nombre": "iPhone",
     "precio": 1200000,
     "stock": 10,
-    "unidad": "Unidades",
+    "unidad": "Un.",
     "img": "https://http2.mlstatic.com/D_NQ_NP_768125-MLA71783090116_092023-O.webp",
     "activo":false
   },
   {
     "id": "Articulo-96",
-    "nombre": "nueva",
-    "precio": 16000,
-    "stock": 10,
-    "unidad": "Kg",
-    "img": "https://cdnx.jumpseller.com/todo-ssangyong/image/5630694/resize/635/635?1638889438",
+    "nombre": "Promoción",
+    "precio": -10000,
+    "stock": 1,
+    "unidad": "Un.",
+    "img": "https://thechileanwines.com/cdn/shop/files/1200x1200-productosChileanWines_13_1800x1800.png?v=1685635169",
     "activo":false
   },
   {

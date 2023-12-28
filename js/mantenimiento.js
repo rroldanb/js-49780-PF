@@ -56,12 +56,12 @@ function mostrarProductosAlmacenados() {
             <p class="text-center">${producto.id}</p>
             <input id="input-nombre-${producto.id}" class="mantencion-producto-input text-center d-flex justify-content-center" type="text" value="${producto.nombre}">
             <input id="input-precio-${producto.id}" class="mantencion-producto-input text-center" type="number" value="${producto.precio}">
-            <input id="input-stock-${producto.id}" class="mantencion-producto-input text-center" type="number" value="${producto.stock}">
+            <input id="input-stock-${producto.id}" class="mantencion-producto-input mantencion-producto-input-stock text-center" type="number" value="${producto.stock}">
             <select id="unidad-medida-${producto.id}" class="form-select text-center d-flex justify-content-center" aria-label="unidad-medida">
                 <option selected>${producto.unidad}</option>
-                <option value="Kg">Kg</option>
-                <option value="Unidades">Unidades</option>
-                <option value="Litros">Litros</option>
+                <option value="Kg">Kilos</option>
+                <option value="Un.">Unidades</option>
+                <option value="Lt">Litros</option>
             </select>       
 
             <div class="imagen-producto text-center">
@@ -77,7 +77,7 @@ function mostrarProductosAlmacenados() {
         `;
         contenedorProductosAlmacenados.appendChild(divProducto);
 
-
+        actualizaInputCantidad();
 
         actualizaBotonesMantencion();
         const imgElement = document.getElementById(`img-${producto.id}`);
@@ -106,7 +106,7 @@ function mostrarProductosAlmacenados() {
                 document.getElementById(`input-stock-${productId}`).value = productoOriginal.stock;
                 // document.getElementById(`unidad-medida-${productId}`).value = productoOriginal.unidad;
                 const selectElement = document.getElementById(`unidad-medida-${productId}`);
-                const unidades = ['Kg', 'Unidades', 'Litros'];
+                const unidades = ['Kg', 'Un.', 'Lt'];
                 const selectedIndex = unidades.indexOf(productoOriginal.unidad);
                 selectElement.selectedIndex = selectedIndex !== -1 ? selectedIndex : 0;
         
@@ -144,8 +144,31 @@ function actualizaBotonesMantencion() {
     })
 }
 
+function actualizaInputCantidad() {
+    const inputCantidad = document.querySelectorAll('.mantencion-producto-input-stock');
+        inputCantidad.forEach(input => {input.addEventListener('change', validaStock);})
+}
 
+function validaStock(event){
+    const input = event.target;
+    const nuevaCantidad = parseInt(input.value);
 
+    if (nuevaCantidad < 0) {
+        Toastify({
+            text: "El stock minimo es 0",
+            duration: 1000,
+            position: "center",
+            gravity: "top",
+            offset: {
+                x: 0,
+                y: 135
+            },
+            style: {
+                background: "var(--clr-red)",
+            }
+        }).showToast();
+        input.value = 0}
+}
 
 
 function guardarCambios(event) {
@@ -243,6 +266,7 @@ function reinicializar() {
                     console.error('Error:', error);
                 });
             localStorage.removeItem('productoEditado');
+            localStorage.removeItem('productos-en-carrito');
 
             cerrarSesion();
         }
