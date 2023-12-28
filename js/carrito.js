@@ -152,7 +152,7 @@ function nuevaCantidad(event) {
         if (nuevaCantidad > stockDisponible) {
             input.value = stockDisponible;
             productoEnCarrito.cantidad = stockDisponible;
-        } else if (nuevaCantidad <= 0) {
+        } else if (nuevaCantidad <= 0 || isNaN(nuevaCantidad)) {
             input.value = 1;
             productoEnCarrito.cantidad = 1;
         } else {

@@ -1,4 +1,29 @@
 
+// Valida que se haya iniciado sesion
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sesionIniciada = localStorage.getItem('sesionIniciada');
+
+    if (!sesionIniciada || sesionIniciada !== 'true') {
+        Toastify({
+            text: "debe iniciar sesion en la pagina de inicio para poder entrar",
+            duration: 1500,
+            position: "center",
+            gravity: "top",
+            offset: {
+                x: 0,
+                y: 135
+            },
+            style: {
+                background: "var(--clr-red)",
+            }
+        }).showToast();
+        window.location.href = 'index.html'; 
+    }
+});
+
+
+
 
 // Mostrar productos almacenados al cargar la página
 mostrarProductosAlmacenados();
@@ -55,7 +80,7 @@ function mostrarProductosAlmacenados() {
 
             <p class="text-center">${producto.id}</p>
             <input id="input-nombre-${producto.id}" class="mantencion-producto-input text-center d-flex justify-content-center" type="text" value="${producto.nombre}">
-            <input id="input-precio-${producto.id}" class="mantencion-producto-input text-center" type="number" value="${producto.precio}">
+            <input id="input-precio-${producto.id}" class="mantencion-producto-input mantencion-producto-input-precio text-center" type="number" value="${producto.precio}">
             <input id="input-stock-${producto.id}" class="mantencion-producto-input mantencion-producto-input-stock text-center" type="number" value="${producto.stock}">
             <select id="unidad-medida-${producto.id}" class="form-select text-center d-flex justify-content-center" aria-label="unidad-medida">
                 <option selected>${producto.unidad}</option>
@@ -104,7 +129,6 @@ function mostrarProductosAlmacenados() {
                 document.getElementById(`input-nombre-${productId}`).value = productoOriginal.nombre;
                 document.getElementById(`input-precio-${productId}`).value = productoOriginal.precio;
                 document.getElementById(`input-stock-${productId}`).value = productoOriginal.stock;
-                // document.getElementById(`unidad-medida-${productId}`).value = productoOriginal.unidad;
                 const selectElement = document.getElementById(`unidad-medida-${productId}`);
                 const unidades = ['Kg', 'Un.', 'Lt'];
                 const selectedIndex = unidades.indexOf(productoOriginal.unidad);
@@ -147,13 +171,17 @@ function actualizaBotonesMantencion() {
 function actualizaInputCantidad() {
     const inputCantidad = document.querySelectorAll('.mantencion-producto-input-stock');
         inputCantidad.forEach(input => {input.addEventListener('change', validaStock);})
+
+    const inputPrecio = document.querySelectorAll('.mantencion-producto-input-precio');
+        inputPrecio.forEach(input => {input.addEventListener('change', validaPrecio);})
+
 }
 
 function validaStock(event){
     const input = event.target;
     const nuevaCantidad = parseInt(input.value);
 
-    if (nuevaCantidad < 0) {
+    if (nuevaCantidad < 0 || isNaN(nuevaCantidad)) {
         Toastify({
             text: "El stock minimo es 0",
             duration: 1000,
@@ -170,6 +198,26 @@ function validaStock(event){
         input.value = 0}
 }
 
+function validaPrecio(event){
+    const input = event.target;
+    const nuevaPrecio = parseInt(input.value);
+
+    if (isNaN(nuevaPrecio)) {
+        Toastify({
+            text: "El precio debe ser numérico",
+            duration: 1000,
+            position: "center",
+            gravity: "top",
+            offset: {
+                x: 0,
+                y: 135
+            },
+            style: {
+                background: "var(--clr-red)",
+            }
+        }).showToast();
+        input.value = 0}
+}
 
 function guardarCambios(event) {
     const productoId = event.currentTarget.dataset.id;
