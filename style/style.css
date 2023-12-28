@@ -120,7 +120,7 @@ body {
   list-style-position: inside;
 }
 
-.titulo-principal, #linkMantenimiento, #cerrarSesion{
+.titulo-principal, #linkMantenimiento{
   background-color: var(--clr-white);
 }
 
@@ -153,22 +153,25 @@ body {
   border-top-left-radius: 1rem;
 }
 
-#linkMantenimiento, #cerrarSesion{
+#linkMantenimiento{
   cursor: pointer;
   height: 100%;
   font-size: 1.5rem;
   padding: 1.15rem;
+  background-color: var(--clr-white);
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; 
 }
 
-#cerrarSesion{
-  font-size: 1.7rem;
+
+#reinicializar, #cerrarSesion{
+  cursor: pointer;
+  height: 100%;
+  font-size: 1.5rem;
   padding: .5rem;
-  color: var(--clr-main);
-  padding-right: 2rem;
 }
 
-#linkMantenimiento:hover, #cerrarSesion:hover{
+
+#linkMantenimiento:hover{
   background-color: var(--clr-main-light);
   color: var(--clr-gray);
 }
@@ -483,15 +486,64 @@ body {
   justify-content: space-between;
 }
 
+#boton-login{
+  margin-top: 1rem;
+}
 
-.mantencion-producto-almacenado, .mantencion-lista-encabezado{
+
+
+#mantencion-productos-almacenados {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-background);
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.mantencion-producto-almacenado, .mantencion-lista-encabezado, .resumen-mantencion-footer {
   background-color: var(--clr-gray);
   color: var(--clr-main);
   padding: .5rem;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   display: grid;
-  grid-template-columns: 1fr 2fr 1.5fr 2fr 1fr 1fr ;
+  grid-template-columns: 1fr 2fr 1.5fr 1fr 1fr 4fr .5fr .5fr;
   align-items: center;
   justify-content: center;
+}
+
+.mantencion-producto-almacenado{
+  border-top: 1px solid var(--clr-main-light);
+
+}
+
+.resumen-mantencion-footer{
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.mantencion-producto-input{
+  width: 70%;
+  margin-left: 15%;
+}
+
+.form-check-input{
+  margin-left: 30%;
+}
+
+
+.mantencion-producto-input, .form-select, .mantencion-img-ruta{
+  max-width: 15rem;
+  border: 1px solid var(--clr-main);
+  color: var(--clr-main);
+  border-radius: 5px;
+  background: var(--clr-white);
+  padding: 5px;
+  text-align: right;
+}
+
+.reiniciar{
+  margin-top: 5px;
 }

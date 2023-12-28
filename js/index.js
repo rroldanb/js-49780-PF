@@ -1,45 +1,63 @@
+
+
+// Carga elementos del DOM en variables
+
+const contenedorProductos = document.querySelector("#contenedor-productos");
+let botonesAgregar = document.querySelectorAll(".producto-agregar");
+let stockproductos = document.querySelectorAll(".producto-stock");
+const numerito = document.querySelector("#numerito");
+const botonCarrito = document.querySelector("#boton-carrito");
+
+
+
+
+let productosEnCarrito;
+let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+if (productosEnCarritoLS) {
+    productosEnCarrito = JSON.parse(productosEnCarritoLS);
+    actualizaNumerito();
+} else {
+    productosEnCarrito = [];
+}
+
 // Inicializa PRODUCTOS desde archivo JSON
 
-
+const productoEditado = localStorage.getItem('productoEditado');
 let PRODUCTOS = [];
 
-fetch("./js/productos.json")
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error cargando el archivo de productos');
-        }
-        return response.json();
-    })
-    .then(data => {
-        importaProductos = data;
-        localStorage.setItem("productos-json-ls", JSON.stringify(importaProductos));
-        let productosEnLS = localStorage.getItem("productos-json-ls");
-        PRODUCTOS = JSON.parse(productosEnLS);
-        despliegaProductos(PRODUCTOS);
-    })
-    .catch(error => {
-        const errorContainer = document.getElementById('error-container');
-        errorContainer.textContent = `Error: ${error.message}`;
-        console.error('Error:', error);
-    });
+if (productoEditado === 'true') {
+    let productosEnLS = localStorage.getItem('productos-json-ls');
+    PRODUCTOS = JSON.parse(productosEnLS);
+    despliegaProductos(PRODUCTOS);
+} else {
+    fetch("./js/productos.json")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error cargando el archivo de productos');
+            }
+            return response.json();
+        })
+        .then(data => {
+            PRODUCTOS = data;
+            localStorage.setItem("productos-json-ls", JSON.stringify(PRODUCTOS));
+            localStorage.setItem("productos-origen-ls", JSON.stringify(PRODUCTOS));
+            despliegaProductos(PRODUCTOS);
+        })
+        .catch(error => {
+            const errorContainer = document.getElementById('error-container');
+            errorContainer.textContent = `Error: ${error.message}`;
+            console.error('Error:', error);
+        });
+}
+
 
 
 //Despliega productos
 
-let row = document.createElement("div");
-row.classList.add("row");
-
-
-// Carga elementos del DOM en variables
-const contenedorProductos = document.querySelector("#contenedor-productos");
-
-let botonesAgregar = document.querySelectorAll(".producto-agregar");
-let stockproductos = document.querySelectorAll(".producto-stock");
-const numerito = document.querySelector("#numerito");
-
-const botonCarrito = document.querySelector("#boton-carrito");
 
 function despliegaProductos(productosElegidos) {
+    let row = document.createElement("div");
+    row.classList.add("row");
     contenedorProductos.innerHTML = "";
     productosElegidos.forEach(producto => {
 
@@ -57,41 +75,28 @@ function despliegaProductos(productosElegidos) {
             <button class="producto-agregar btn btn-primary" id="${producto.id}">Agregar al Carro</button>
         </div>
         `;
-        contenedorProductos.append(cardProducto);
 
-
+        contenedorProductos.append(producto.activo ? cardProducto : '');
+        actualizaStock();
     })
     actualizaBotonesAgregar()
 }
 
 
-
-despliegaProductos(PRODUCTOS);
-
-
 function actualizaBotonesAgregar() {
     botonesAgregar = document.querySelectorAll(".producto-agregar");
-
     botonesAgregar.forEach(boton => {
-        boton.addEventListener("click", agregarAlCarito);
+        boton.addEventListener("click", agregarAlCarrito);
     })
 }
 
 
 // Gestion de compras
 
-let productosEnCarrito;
-let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
-if (productosEnCarritoLS) {
-    productosEnCarrito = JSON.parse(productosEnCarritoLS);
-    actualizaNumerito();
-} else {
-    productosEnCarrito = [];
-}
 
 
 
-function agregarAlCarito(e) {
+function agregarAlCarrito(e) {
 
     const idBoton = e.currentTarget.id;
     const productoAgregado = PRODUCTOS.find(producto => producto.id === idBoton);
@@ -103,11 +108,7 @@ function agregarAlCarito(e) {
         productosEnCarrito.push(productoAgregado);
     }
     actualizaNumerito();
-
-    //Guarda en Local Storage
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-
-
     Toastify({
         text: `Agregando ${productoAgregado.nombre} al carrito`,
         duration: 1000,
@@ -164,13 +165,11 @@ function getProductosEnCarritoCantidad(id) {
 }
 
 
-
+//MODAL LOGIN
 
 document.getElementById('linkMantenimiento').addEventListener('click', function () {
     const sesionIniciada = localStorage.getItem('sesionIniciada');
-    const linkMantenimiento = document.getElementById('linkMantenimiento');
-
-
+    // const linkMantenimiento = document.getElementById('linkMantenimiento');
     if (sesionIniciada) {
         window.location.href = 'mantenimiento.html';
     } else {
@@ -178,31 +177,10 @@ document.getElementById('linkMantenimiento').addEventListener('click', function 
     }
 });
 
-function validarCredenciales() {
-    const usuario = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    // Verificar si las credenciales son correctas
-    if (usuario === 'coder' && password === 'coder49780') {
-        // Redirigir a la página de mantenimiento y almacenar en localStorage
-        localStorage.setItem('sesionIniciada', 'true');
-        window.location.href = 'mantenimiento.html';
-    } else {
-        // Mostrar mensaje de error o tomar alguna otra acción
-        Toastify({
-            text: 'Credenciales incorrectas. Intente de nuevo.',
-            duration: 3000,
-            backgroundColor: 'red',
-        }).showToast();
-    }
-}
-
-// Seleccionar elementos
 const inputPassword = document.getElementById('password');
 const botonMostrarOcultar = document.getElementById('mostrar-ocultar-password');
 const iconoPassword = document.getElementById('icono-password');
 
-// Agregar evento al botón
 botonMostrarOcultar.addEventListener('click', function () {
     if (inputPassword.type === 'password') {
         inputPassword.type = 'text';
@@ -215,9 +193,22 @@ botonMostrarOcultar.addEventListener('click', function () {
     }
 });
 
+function validarCredenciales() {
+    const usuario = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-
-function cerrarSesion() {
-    localStorage.removeItem('sesionIniciada');
-    window.location.href = 'index.html';
+    // CREDENCIALES LOGIN
+    if (usuario === 'coder' && password === 'coder49780') {
+        localStorage.setItem('sesionIniciada', 'true');
+        window.location.href = 'mantenimiento.html';
+    } else {
+        Toastify({
+            text: 'Credenciales incorrectas. Intente de nuevo.',
+            duration: 3000,
+            backgroundColor: 'red',
+        }).showToast();
+    }
 }
+
+
+

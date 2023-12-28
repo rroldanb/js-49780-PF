@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="./style/style.css">
     <!-- ----link toastify----- -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    
+
     <title>Proyecto Final js-49780 :: Mantenimiento</title>
 </head>
 
@@ -34,7 +37,8 @@
                             <i class="bi bi-gear"></i> Mantenimiento de Productos
                         </div>
                     </h2>
-                    <i id="cerrarSesion" onclick="cerrarSesion()" class="bi bi-file-lock2 "></i>
+                    <i id="reinicializar" onclick="reinicializar()" class="bi bi-recycle btn btn-outline-danger" title="Reinicializar todo"></i>
+                    <i id="cerrarSesion" onclick="cerrarSesion()" class="bi bi-person-lock btn btn-outline-primary" title="Cerrar sesión"></i>
                     <p><a id="boton-volver" class="boton-volver boton-menu" href="./index.html"><i
                                 class="bi bi-arrow-return-left"></i>Volver</a> </p>
                 </div>
@@ -44,29 +48,11 @@
 
 
         <main>
-            <section id="productos-almacenados" class="container productosStore">
+            <section id="mantencion-productos-almacenados" class="container productosStore">
                 <!-- Aquí se mostrarán los productos almacenados -->
             </section>
 
-            <section id="formulario-agregar" class="container">
-                <h2>Agregar Nuevo Producto</h2>
-                <form id="formulario-producto">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" required><br><br>
 
-                    <label for="precio">Precio:</label>
-                    <input type="number" id="precio" required><br><br>
-
-                    <label for="stock">Stock:</label>
-                    <input type="number" id="stock" required><br><br>
-
-                    <label for="imagen">Imagen:</label>
-                    <input type="file" id="imagen" accept="image/*" required><br><br>
-
-                    <input type="submit" value="Agregar Producto">
-                </form>
-                <p>Capacidad disponible en el LocalStorage: <span id="capacidad-localstorage"></span></p>
-            </section>
 
         </main>
 
@@ -92,6 +78,16 @@
 
         </section>
     </div>
+
+
+
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <!-- toastify -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="./js/mantenimiento.js"></script>
 

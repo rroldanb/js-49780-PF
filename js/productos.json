@@ -5,7 +5,8 @@
     "precio": 11000,
     "stock": 10,
     "unidad": "Kg",
-    "img": "./assets/img/asado.webp"
+    "img": "./assets/img/asado.webp",
+    "activo":true
   },
   {
     "id": "carne-02",
@@ -13,15 +14,17 @@
     "precio": 12000,
     "stock": 10,
     "unidad": "Kg",
-    "img": "./assets/img/bife-angus.webp"
+    "img": "./assets/img/bife-angus.webp",
+    "activo":true
   },
   {
-    "id": "carne-3",
+    "id": "carne-03",
     "nombre": "Colita de Cuadril",
     "precio": 13000,
     "stock": 10,
     "unidad": "Kg",
-    "img": "./assets/img/colita-de-cuadril.webp"
+    "img": "./assets/img/colita-de-cuadril.webp",
+    "activo":true
   },
   {
     "id": "carne-04",
@@ -29,7 +32,8 @@
     "precio": 14000,
     "stock": 10,
     "unidad": "Kg",
-    "img": "./assets/img/entrana.webp"
+    "img": "./assets/img/entrana.webp",
+    "activo":true
   },
   {
     "id": "carne-05",
@@ -37,7 +41,8 @@
     "precio": 15000,
     "stock": 10,
     "unidad": "Kg",
-    "img": "./assets/img/tomahawk.webp"
+    "img": "./assets/img/tomahawk.webp",
+    "activo":true
   },
   {
     "id": "carne-06",
@@ -45,6 +50,97 @@
     "precio": 16000,
     "stock": 10,
     "unidad": "Kg",
-    "img": "./assets/img/entrecot.webp"
+    "img": "./assets/img/entrecot.webp",
+    "activo":true
+  },
+  {
+    "id": "Articulo-90",
+    "nombre": "Strato",
+    "precio": 700000,
+    "stock": 10,
+    "unidad": "Unidades",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQux2ujpNeD-vAEt6xT6PDy0t0Al5HSs-LKsg&usqp=CAU",
+    "activo":false
+  },
+  {
+    "id": "Articulo-91",
+    "nombre": "Mario",
+    "precio": 9999,
+    "stock": 9,
+    "unidad": "Unidades",
+    "img": "https://i.ebayimg.com/images/g/IHQAAOSwHLFd46hJ/s-l960.jpg",
+    "activo":false
+  },
+  {
+    "id": "Articulo-92",
+    "nombre": "Jack",
+    "precio": 20000,
+    "stock": 10,
+    "unidad": "Litros",
+    "img": "https://i.ebayimg.com/images/g/ld4AAOSw--tgnOHt/s-l1600.jpg",
+    "activo":false
+  },
+  {
+    "id": "Articulo-93",
+    "nombre": "Fernandete",
+    "precio": 10000,
+    "stock": 10,
+    "unidad": "Litros",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTciSyuCkqEiSf1mG_2QhnF_u18zPIcW9FbFQ&usqp=CAU",
+    "activo":false
+  },
+  {
+    "id": "Articulo-94",
+    "nombre": "Play",
+    "precio": 500000,
+    "stock": 10,
+    "unidad": "Unidades",
+    "img": "https://phantom-marca.unidadeditorial.es/4edae29b7e2a74e87e5bcfe03f5c5f91/resize/828/f/jpg/assets/multimedia/imagenes/2023/10/11/16970178038067.jpg",
+    "activo":false
+  },
+  {
+    "id": "Articulo-95",
+    "nombre": "iPhone",
+    "precio": 1200000,
+    "stock": 10,
+    "unidad": "Unidades",
+    "img": "https://http2.mlstatic.com/D_NQ_NP_768125-MLA71783090116_092023-O.webp",
+    "activo":false
+  },
+  {
+    "id": "Articulo-96",
+    "nombre": "nueva",
+    "precio": 16000,
+    "stock": 10,
+    "unidad": "Kg",
+    "img": "https://cdnx.jumpseller.com/todo-ssangyong/image/5630694/resize/635/635?1638889438",
+    "activo":false
+  },
+  {
+    "id": "Articulo-97",
+    "nombre": "nueva",
+    "precio": 16000,
+    "stock": 10,
+    "unidad": "Kg",
+    "img": "https://cdnx.jumpseller.com/todo-ssangyong/image/5630694/resize/635/635?1638889438",
+    "activo":false
+  },
+  {
+    "id": "Articulo-98",
+    "nombre": "nueva",
+    "precio": 16000,
+    "stock": 10,
+    "unidad": "Kg",
+    "img": "https://cdnx.jumpseller.com/todo-ssangyong/image/5630694/resize/635/635?1638889438",
+    "activo":false
+  },
+  {
+    "id": "Articulo-99",
+    "nombre": "nueva",
+    "precio": 16000,
+    "stock": 10,
+    "unidad": "Kg",
+    "img": "https://cdnx.jumpseller.com/todo-ssangyong/image/5630694/resize/635/635?1638889438",
+    "activo":false
   }
 ]
